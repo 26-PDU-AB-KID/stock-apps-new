@@ -33,13 +33,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('supplier') ?>">Suppliers </a>
+        <a class="nav-link" href="<?= base_url('supplier') ?>">Supplier</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('customer') ?>">Customer</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="<?= base_url('raw_material') ?>">Raw Material</a>
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->

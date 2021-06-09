@@ -32,7 +32,7 @@ class Supplier extends CI_Controller
     public function addSupplier()
     {
         $data = [
-            'name'          => $this->input->post('name', TRUE),
+            'name'          => strtolower($this->input->post('name', TRUE)),
             'address'       => $this->input->post('address', TRUE),
             'created_at'    => date('Y-m-d H:i:s'),
         ];
@@ -49,14 +49,14 @@ class Supplier extends CI_Controller
     public function editSupplier()
     {
         $data = [
-            'name'          => $this->input->post('name', TRUE),
+            'name'          => strtolower($this->input->post('name', TRUE)),
             'address'       => $this->input->post('address', TRUE),
             'updated_at'    => date('Y-m-d H:i:s'),
         ];
 
         $dataFilter = $this->security->xss_clean($data);
 
-        $this->supplier->edit_supplier($dataFilter, $this->input->post('id'));
+        $this->supplier->edit_supplier($dataFilter, $this->input->post('id', TRUE));
 
         $this->session->set_flashdata('flash', "<script>Swal.fire({position: 'top-end',icon: 'success',title: 'Supplier has been updated!',showConfirmButton: false,timer: 1500})</script>");
 
@@ -68,15 +68,15 @@ class Supplier extends CI_Controller
     {
         $data = [
             'is_deleted'        => '1',
-            'remark_deleted'	=> $this->input->post('remark', TRUE),
+            'remark_deleted'	=> strtolower($this->input->post('remark', TRUE)),
 			'deleted_at'		=> date('Y-m-d H:i:s'),
         ];
 
         $dataFilter = $this->security->xss_clean($data);
 
-        $this->supplier->delete_supplier($dataFilter, $this->input->post('id'));
+        $this->supplier->delete_supplier($dataFilter, $this->input->post('id', TRUE));
 
-        $this->session->set_flashdata('flash', "<script>Swal.fire({position: 'top-end',icon: 'success',title: 'Supplier has been updated!',showConfirmButton: false,timer: 1500})</script>");
+        $this->session->set_flashdata('flash', "<script>Swal.fire({position: 'top-end',icon: 'success',title: 'Supplier has been deleted!',showConfirmButton: false,timer: 1500})</script>");
 
         redirect('supplier');
 

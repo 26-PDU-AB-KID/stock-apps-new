@@ -1,4 +1,4 @@
-<h1>Suppliers</h1>
+<h1>Supplier</h1>
 
 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addSupplier"><i class="fas fa-plus"></i> Add New Supplier</button>
 
@@ -16,7 +16,7 @@
     <?php foreach($suppliers as $supplier) : ?>
         <tr>
             <td><?= $no++; ?></td>
-            <td><?= $supplier['name'] ?></td>
+            <td><?= ucwords($supplier['name']) ?></td>
             <td><?= $supplier['address'] ?></td>
             <td class="text-center">
                 <button class="btn btn-sm btn-success" data-target="#editSupplier<?= $supplier['id'] ?>" data-toggle="modal"><i class="fas fa-edit"></i> Edit</button>
@@ -73,7 +73,7 @@
                     <input type="hidden" id="id" name="id" value="<?= $supplier['id'] ?>">
                     <div class="form-group">
                         <label class="font-weight-bolder" for="name">Name</label>
-                        <input type="text" class="form-control form-control-sm" id="name" name="name" value="<?= $supplier['name'] ?>" required autocomplete="off">
+                        <input type="text" class="form-control form-control-sm" id="name" name="name" value="<?= ucwords($supplier['name']) ?>" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bolder" for="address">Address</label>
