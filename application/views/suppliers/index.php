@@ -19,6 +19,7 @@
             <td><?= ucwords($supplier['name']) ?></td>
             <td><?= $supplier['address'] ?></td>
             <td class="text-center">
+            <a class="btn btn-sm btn-primary" href="<?= base_url('supplier/detailSupplier/'. $supplier['id'] . '/' . md5($supplier['address'])) ?>"><i class="fas fa-info"></i> Detail</a>
                 <button class="btn btn-sm btn-success" data-target="#editSupplier<?= $supplier['id'] ?>" data-toggle="modal"><i class="fas fa-edit"></i> Edit</button>
                 <button class="btn btn-sm btn-danger" data-target="#deleteSupplier<?= $supplier['id'] ?>" data-toggle="modal"><i class="fas fa-trash-alt"></i> Delete</button>
             </td>
@@ -50,7 +51,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Add</button>
                 </div>
             </form>
         </div>
@@ -82,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save"></i> Save</button>
                 </div>
             </form>
         </div>
@@ -111,7 +112,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
                 </div>
             </form>
         </div>

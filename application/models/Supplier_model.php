@@ -9,7 +9,14 @@ class Supplier_model extends CI_Model
 
 		return $result;
     }
-    
+
+	function get_supplier_by_id($id)
+	{
+		$result = $this->db->get_where('suppliers', ['id' => $id])->row_array();
+
+		return $result;
+    }
+
     function add_supplier($data)
     {
         $this->db->insert('suppliers', $data);

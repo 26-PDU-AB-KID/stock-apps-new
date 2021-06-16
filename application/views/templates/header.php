@@ -41,6 +41,14 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('raw_material') ?>">Raw Material</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Transaction
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="transaction/stockIn">Stock In</a>
+          <a class="dropdown-item" href="#">Stock Out</a>
+      </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
         <a class="nav-link font-weight-bolder" href="#" data-toggle="modal" data-target="#logoutModal"><span data-feather="log-out"></span> Log Out</a>

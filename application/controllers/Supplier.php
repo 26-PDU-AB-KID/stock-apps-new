@@ -12,6 +12,9 @@ class Supplier extends CI_Controller
 		}
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Supplier_model', 'supplier');
+        $this->load->model('Raw_material_model', 'raw_material');
+        $this->load->model('Stock_raw_material_model', 'stock_raw_material');
+        $this->load->model('View_stock_raw_material_by_supplier_model', 'view_stock_raw_material_by_supplier');
 	}
 
 	/**
@@ -81,4 +84,37 @@ class Supplier extends CI_Controller
         redirect('supplier');
 
     }
+
+    public function detailSupplier($id, $address)
+    {
+        $data = [
+            'title'             => 'Detail Supplier',
+            'supplier'          => $this->supplier->get_supplier_by_id($id),
+            'raw_materials'     => $this->raw_material->get_raw_materials(),
+            'detail_suppliers'  => $this->view_stock_raw_material_by_supplier->get_view_stock_raw_material_by_suppliers_by_supplier_id($id),
+            'address'           => $address
+        ];
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('suppliers/detail_supplier');
+        $this->load->view('templates/footer');
+
+    }
+
+    public function addDetailSupplier()
+    {
+        $data = [
+            'supplier_id'       => $this->input->post('supplier_id'),
+            'raw_material_id'   => $this->input->post('raw_material_id'),
+            'amount'            => 0,
+            'created_at'        => date('Y-m-d H:i:s'),
+        ];
+
+        $this->stock_raw_material->input_stock_raw_material($data);
+
+        $this->session->set_flashdata('flash', "<script>Swal.fire({position: 'top-end',icon: 'success',title: 'New Raw Material has been added to the Supplier!',showConfirmButton: false,timer: 1500})</script>");
+
+        redirect('supplier/detailSupplier/' . $this->input->post('supplier_id') . '/' . $this->input->post('address'));
+    }
+
 }

@@ -13,7 +13,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-sm btn-secondary" type="button" data-dismiss="modal"><span data-feather="x"></span> Cancel</button>
-                <a class="btn btn-sm btn-danger" href="<?= base_url('auth/logout') ?>"><span data-feather="log-out"></span> Sign Out</a>
+                <a class="btn btn-sm btn-danger" href="<?= base_url('auth/logout') ?>"><span data-feather="log-out"></span> Log Out</a>
             </div>
         </div>
     </div>

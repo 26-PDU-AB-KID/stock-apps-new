@@ -5,11 +5,14 @@ class raw_material_model extends CI_Model
 
 	function get_raw_materials()
 	{
-        $this->db->select('raw_materials.id as id, code, raw_materials.name as name, unit_id, units.name as unit_name');
-        $this->db->from('raw_materials');
-        $this->db->join('units', 'units.id=raw_materials.unit_id', 'left');
-        $this->db->where('is_deleted', '0');
-        $result = $this->db->get()->result_array();
+        $result = $this->db->query("SELECT raw_materials.id AS id, code, raw_materials.name AS raw_material_name, unit_id, units.name AS unit_name, SUM(amount) AS stock FROM raw_materials LEFT JOIN units ON raw_materials.unit_id=units.id LEFT JOIN stock_raw_materials ON stock_raw_materials.raw_material_id=raw_materials.id WHERE raw_materials.is_deleted='0' GROUP BY raw_materials.id")->result_array();
+
+        return $result;
+    }
+
+    function get_raw_material_by_code($code)
+    {
+        $result = $this->db->get_where('raw_materials', ['code' => $code])->row_array();
 
         return $result;
     }

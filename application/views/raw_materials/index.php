@@ -9,6 +9,7 @@
       <th scope="col">Code</th>
       <th scope="col">Name</th>
       <th scope="col">Unit</th>
+      <th scope="col">Stock</th>
       <th scope="col" class="text-center">Actions</th>
     </tr>
   </thead>
@@ -18,9 +19,11 @@
         <tr>
             <td><?= $no++; ?></td>
             <td><?= $raw_material['code'] ?></td>
-            <td><?= ucwords($raw_material['name']) ?></td>
+            <td><?= ucwords($raw_material['raw_material_name']) ?></td>
             <td><?= $raw_material['unit_name'] ?></td>
+            <td><?= ($raw_material['stock'] == NULL) ? '0' : $raw_material['stock'] ?></td>
             <td class="text-center">
+                <a class="btn btn-sm btn-primary" href="<?= base_url('raw_material/detailRawMaterial/'. $raw_material['code'] . '/' . md5($raw_material['id'])) ?>"><i class="fas fa-info"></i> Detail</a>
                 <button class="btn btn-sm btn-success" data-target="#editRawMaterial<?= $raw_material['id'] ?>" data-toggle="modal"><i class="fas fa-edit"></i> Edit</button>
                 <button class="btn btn-sm btn-danger" data-target="#deleteRawMaterial<?= $raw_material['id'] ?>" data-toggle="modal"><i class="fas fa-trash-alt"></i> Delete</button>
             </td>
@@ -57,7 +60,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Add</button>
                 </div>
             </form>
         </div>
@@ -70,7 +73,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-bolder" id="editRawMaterialLabel">Form Edit Raw Material <?= ucwords($raw_material['name']) ?></h5>
+                <h5 class="modal-title font-weight-bolder" id="editRawMaterialLabel">Form Edit Raw Material <?= ucwords($raw_material['raw_material_name']) ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -80,7 +83,7 @@
                     <input type="hidden" name="id" value="<?= $raw_material['id'] ?>">
                     <div class="form-group">
                         <label class="font-weight-bolder" for="name">Name</label>
-                        <input type="text" class="form-control form-control-sm" name="name" value="<?= ucwords($raw_material['name']) ?>" required autocomplete="off">
+                        <input type="text" class="form-control form-control-sm" name="name" value="<?= ucwords($raw_material['raw_material_name']) ?>" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bolder" for="unit">Unit</label>
@@ -94,7 +97,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save"></i> Save</button>
                 </div>
             </form>
         </div>
@@ -108,7 +111,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-bolder" id="deleteRawMaterialLabel">Form Delete raw_material <?= $raw_material['name'] ?></h5>
+                <h5 class="modal-title font-weight-bolder" id="deleteRawMaterialLabel">Form Delete raw_material <?= $raw_material['raw_material_name'] ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -123,7 +126,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
                 </div>
             </form>
         </div>
