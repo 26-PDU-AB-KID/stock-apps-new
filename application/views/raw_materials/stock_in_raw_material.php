@@ -6,6 +6,7 @@
     <input type="hidden" name="supplier_id" value="<?= ucwords($stock_raw_materials['supplier_id']) ?>">
     <input type="hidden" name="raw_material_id" value="<?= ucwords($stock_raw_materials['raw_material_id']) ?>">
     <input type="hidden" name="unit_id" value="<?= ucwords($stock_raw_materials['unit_id']) ?>">
+    <input type="hidden" name="code" value="<?= $stock_raw_materials['code'] ?>">
     <div class="form-group">
         <label class="font-weight-bolder" for="supplier">Supplier</label>
         <input type="text" class="form-control form-control-sm" id="supplier" name="supplier" value="<?= ucwords($stock_raw_materials['supplier_name']) ?>" required readonly autocomplete="off">

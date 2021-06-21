@@ -153,7 +153,7 @@ class Raw_material extends CI_Controller
 
         $this->session->set_flashdata('flash', "<script>Swal.fire({position: 'top-end',icon: 'success',title: 'Stock In Raw Material has been updated!',showConfirmButton: false,timer: 1500})</script>");
 
-        redirect('raw_material');
+        redirect('raw_material/detailRawMaterial/'. $this->input->post('code') . '/' . md5($this->input->post('raw_material_id')));
 
     }
 

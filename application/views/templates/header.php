@@ -15,15 +15,22 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap-4.6.0/css/bootstrap.min.css') ?>">
 
+    <!-- Date Time Picker -->
+    <link rel="stylesheet" href="<?= base_url('assets/datetimepicker/jquery.datetimepicker.css') ?>">
+
+    <!-- Jquery -->
     <script src="<?= base_url('assets/jquery.js') ?>"></script>
     
     <!-- Sweetalert -->
     <script src="<?= base_url('assets/sweetalert2-11.0.16/dist/sweetalert2.all.min.js') ?>"></script>
+
+    <!-- Date Time Picker -->
+    <script src="<?= base_url('assets/datetimepicker/build/jquery.datetimepicker.full.min.js') ?>"></script>
     
 </head>
 <body>
 
-<?= $this->session->flashdata('flash'); ?>
+<?= $this->session->flashdata('flash'); ?>  
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="<?= base_url('dashboard') ?>">Dashboard<span class="sr-only">(current)</span></a>
@@ -38,19 +45,23 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('customer') ?>">Customer</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('raw_material') ?>">Raw Material</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Goods
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?= base_url('raw_material')?>">Raw Material</a>
+          <a class="dropdown-item" href="<?= base_url('product')?>">Product</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Transaction
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="transaction/stockIn">Stock In</a>
+          <a class="dropdown-item" href="<?= base_url('transaction/stockIn')?>">Stock In</a>
           <a class="dropdown-item" href="#">Stock Out</a>
       </li>
       <li class="nav-item">
-        <!-- <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
         <a class="nav-link font-weight-bolder" href="#" data-toggle="modal" data-target="#logoutModal"><span data-feather="log-out"></span> Log Out</a>
       </li>
     </ul>

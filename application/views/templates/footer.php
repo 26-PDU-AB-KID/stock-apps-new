@@ -19,7 +19,6 @@
     </div>
 </div>
 
-
 <script src="<?= base_url('assets/jquery.js') ?>"></script>
 <script src="<?= base_url('assets/bootstrap-4.6.0/js/bootstrap.bundle.js') ?>"></script>
 

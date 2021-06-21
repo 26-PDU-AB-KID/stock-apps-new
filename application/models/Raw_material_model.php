@@ -16,6 +16,17 @@ class raw_material_model extends CI_Model
 
         return $result;
     }
+
+    function get_raw_material_by_unit_id($id)
+    {
+        $this->db->select('raw_materials.id AS id, code, raw_materials.name AS raw_material_name, raw_materials.unit_id AS unit_id, units.name AS unit_name, units.symbol AS unit_symbol');
+        $this->db->from('raw_materials');
+        $this->db->join('units', 'units.id = raw_materials.unit_id', 'left');
+        $this->db->where('unit_id', $id);
+        $result = $this->db->get()->row_array();
+
+        return $result;
+    }
     
     function add_raw_material($data)
     {
