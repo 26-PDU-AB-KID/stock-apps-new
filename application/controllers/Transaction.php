@@ -80,7 +80,7 @@ class Transaction extends CI_Controller
 
     public function getUnit($raw_material_id)
     {
-        $unit = $this->raw_material->get_raw_material_by_unit_id($raw_material_id);
+        $unit = $this->raw_material->get_unit_id_by_raw_material_id($raw_material_id);
 
         echo "<option value='". $unit['unit_id'] ."' readonly selected>". ucwords($unit['unit_name']) . "</option>";
 
