@@ -1,7 +1,7 @@
 <h1>Stock In Raw Material</h1>
 
 <div class="col-md-10">
-<form method="POST" action="<?= base_url('transaction/stockInProcess') ?>">
+<form method="POST" action="<?= base_url('Stock_in_raw_material/stockInProcess') ?>">
     <div class="form-group">
         <label class="font-weight-bolder" for="supplier">Supplier</label>
         <select class="form-control form-control-sm" id="supplier" name="supplier">
@@ -56,7 +56,7 @@
 
     document.getElementById('supplier').addEventListener('change', function() {
 
-        fetch("<?= base_url('transaction/getRawMaterial/') ?>" + this.value, {
+        fetch("<?= base_url('Stock_in_raw_material/getRawMaterial/') ?>" + this.value, {
                 method: 'GET',
             })
             .then((response) => response.text())
@@ -68,7 +68,7 @@
 
     document.getElementById('raw_material').addEventListener('change', function() {
 
-        fetch("<?= base_url('transaction/getUnit/') ?>" + this.value, {
+        fetch("<?= base_url('Stock_in_raw_material/getUnit/') ?>" + this.value, {
                 method: 'GET',
             })
             .then((response) => response.text())

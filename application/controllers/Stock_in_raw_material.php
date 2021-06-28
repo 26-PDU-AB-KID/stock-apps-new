@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Transaction extends CI_Controller
+class Stock_in_raw_material extends CI_Controller
 {
 
 	public function __construct()
@@ -13,8 +13,8 @@ class Transaction extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Supplier_model', 'supplier');
         $this->load->model('Raw_material_model', 'raw_material');
-        $this->load->model('stock_raw_material_model', 'stock_raw_material');
-        $this->load->model('stock_in_raw_material_model', 'stock_in_raw_material');
+        $this->load->model('Stock_raw_material_model', 'stock_raw_material');
+        $this->load->model('Stock_in_raw_material_model', 'stock_in_raw_material');
         $this->load->model('View_stock_raw_material_by_supplier_model', 'view_stock_raw_material_by_supplier');
 	}
 
@@ -23,19 +23,14 @@ class Transaction extends CI_Controller
 	 */
 	public function index()
 	{
-        redirect('transaction/stockIn');
-    }
-
-    public function stockIn()
-    {
         $data = [
-            'title'         => 'Stock In',
+            'title'         => 'Stock In Raw Material',
             'suppliers'     => $this->supplier->get_suppliers(),
             'raw_materials' => $this->raw_material->get_raw_materials(),
         ];
 
         $this->load->view('templates/header', $data);
-        $this->load->view('transactions/index');
+        $this->load->view('stock_in_raw_materials/index');
         $this->load->view('templates/footer');
     }
 
@@ -45,7 +40,7 @@ class Transaction extends CI_Controller
 
         $amountFilter = $this->security->xss_clean($amount);
 
-        $this->stock_raw_material->insert_stock_raw_material($amountFilter, $this->input->post('raw_material', TRUE));
+        $this->stock_raw_material->insert_stock_raw_material($amountFilter, $this->input->post('supplier', TRUE), $this->input->post('raw_material', TRUE));
 
         $data = [
             'no_transaction'    => $this->stock_in_raw_material->get_stock_in_raw_material_code(),
@@ -64,7 +59,7 @@ class Transaction extends CI_Controller
 
         $this->session->set_flashdata('flash', "<script>Swal.fire({position: 'top-end',icon: 'success',title: 'Stock In Raw Material has been updated!',showConfirmButton: false,timer: 1500})</script>");
 
-        redirect('transaction/stockIn');
+        redirect('Stock_in_raw_material');
 
     }
 

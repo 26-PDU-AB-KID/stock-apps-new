@@ -27,7 +27,7 @@
             <td><?= ucwords($product['product_unit']) ?></td>
             <td class="text-right"><?= 'Rp' . number_format($product['cost_of_goods'],0,",",".") ?></td>
             <td class="text-right"><?= 'Rp' . number_format($product['selling_price_of_goods'],0,",",".") ?></td>
-            <td class="text-right"><?= $product['stock'] ?></td>
+            <td class="text-right"><?= ($product['amount'] == NULL) ? '0' : $product['amount'] ?></td>
             <td class="text-center">
                 <button class="btn btn-sm btn-success" data-target="#editProduct<?= $product['id'] ?>" data-toggle="modal"><i class="fas fa-edit"></i> Edit</button>
                 <button class="btn btn-sm btn-danger" data-target="#deleteProduct<?= $product['id'] ?>" data-toggle="modal"><i class="fas fa-trash-alt"></i> Delete</button>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bolder" for="name">Name</label>
-                        <input type="text" class="form-control form-control-sm" name="name" value="<?= $product['product_name'] ?>" required autocomplete="off">
+                        <input type="text" class="form-control form-control-sm" name="name" value="<?= ucwords($product['product_name']) ?>" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bolder" for="product_unit">Product Unit</label>

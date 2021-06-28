@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
         <label class="font-weight-bolder" for="date">Date</label>
-        <input type="date" class="form-control form-control-sm" id="date" name="date" placeholder="Enter the date..." required autocomplete="off">
+        <input type="text" class="form-control form-control-sm" id="date" name="date" placeholder="Enter the date..." required autocomplete="off">
     </div>
     <div class="form-group">
         <label class="font-weight-bolder" for="price">Price (Rp)</label>
@@ -30,3 +30,10 @@
     <button type="submit" class="btn btn-sm btn-primary">Save</button>
 </form>
 </div>
+
+<script>
+    jQuery('#date').datetimepicker({
+        timepicker: false,
+        format: 'd F Y'
+    });
+</script>

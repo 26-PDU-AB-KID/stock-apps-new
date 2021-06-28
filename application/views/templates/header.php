@@ -39,7 +39,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="<?= base_url('supplier') ?>">Supplier</a>
       </li>
       <li class="nav-item">
@@ -58,8 +58,10 @@
           Transaction
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?= base_url('transaction/stockIn')?>">Stock In</a>
-          <a class="dropdown-item" href="#">Stock Out</a>
+          <a class="dropdown-item" href="<?= base_url('stock_in_raw_material')?>">Stock In Raw Material</a>
+          <a class="dropdown-item" href="<?= base_url('convert')?>">Convert</a>
+          <a class="dropdown-item" href="<?= base_url('stock_in_product')?>">Stock In Product</a>
+          <a class="dropdown-item" href="#">Stock Out Product</a>
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bolder" href="#" data-toggle="modal" data-target="#logoutModal"><span data-feather="log-out"></span> Log Out</a>

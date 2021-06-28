@@ -76,7 +76,7 @@ class Product extends CI_Controller
             'raw_material_id'           => $this->input->post('raw_material', TRUE),
             'per_pcs'                   => $this->input->post('weight', TRUE) / 1000,
             'unit_id'                   => $unit_id,
-            'created_at'                => date('Y-m-d H:i:s')
+            'updated_at'                => date('Y-m-d H:i:s')
         ];
         
         $dataFilter = $this->security->xss_clean($data);

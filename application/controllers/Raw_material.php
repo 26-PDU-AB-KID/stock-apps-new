@@ -138,7 +138,7 @@ class Raw_material extends CI_Controller
 
         $data = [
             'no_transaction'    => $this->stock_in_raw_material->get_stock_in_raw_material_code(),
-            'date'              => $this->input->post('date', TRUE),
+            'date'              => date('Y-m-d', strtotime($this->input->post('date', TRUE))),
             'supplier_id'       => $this->input->post('supplier_id', TRUE),
             'raw_material_id'   => $this->input->post('raw_material_id', TRUE),
             'unit_id'           => $this->input->post('unit_id', TRUE),
