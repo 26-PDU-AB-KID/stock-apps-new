@@ -25,8 +25,7 @@ class Stock_in_raw_material extends CI_Controller
 	{
         $data = [
             'title'         => 'Stock In Raw Material',
-            'suppliers'     => $this->supplier->get_suppliers(),
-            'raw_materials' => $this->raw_material->get_raw_materials(),
+            'suppliers'     => $this->supplier->get_suppliers()
         ];
 
         $this->load->view('templates/header', $data);
