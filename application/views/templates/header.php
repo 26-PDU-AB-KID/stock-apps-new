@@ -61,7 +61,7 @@
           <a class="dropdown-item" href="<?= base_url('stock_in_raw_material')?>">Stock In Raw Material</a>
           <a class="dropdown-item" href="<?= base_url('convert')?>">Convert</a>
           <a class="dropdown-item" href="<?= base_url('stock_in_product')?>">Stock In Product</a>
-          <a class="dropdown-item" href="#">Stock Out Product</a>
+          <a class="dropdown-item" href="<?= base_url('stock_out_product') ?>">Stock Out Product</a>
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bolder" href="#" data-toggle="modal" data-target="#logoutModal"><span data-feather="log-out"></span> Log Out</a>
