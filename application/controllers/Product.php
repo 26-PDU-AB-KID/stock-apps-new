@@ -12,6 +12,7 @@ class Product extends CI_Controller
 		}
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Product_model', 'product');
+        $this->load->model('Stock_product_model', 'stock_product');
         $this->load->model('Raw_material_model', 'raw_material');
 	}
 
@@ -100,6 +101,7 @@ class Product extends CI_Controller
         $dataFilter = $this->security->xss_clean($data);
 
         $this->product->delete_product($dataFilter, $this->input->post('id', TRUE));
+        $this->stock_product->delete_stock_product($dataFilter, $this->input->post('id', TRUE));
 
         $this->session->set_flashdata('flash', "<script>Swal.fire({position: 'top-end',icon: 'success',title: 'Product has been deleted!',showConfirmButton: false,timer: 1500})</script>");
 

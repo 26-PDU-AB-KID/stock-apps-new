@@ -12,7 +12,10 @@ class stock_in_product_model extends CI_Model
 
 	function get_stock_in_product_code()
 	{
-		$q  = $this->db->query("SELECT MAX(RIGHT(no_transaction,4)) AS kd_max FROM stock_in_products");
+		$year = date('Y');
+		$month = date('m');
+
+		$q  = $this->db->query("SELECT MAX(RIGHT(no_transaction,4))  AS kd_max FROM stock_in_products WHERE MONTH(created_at) = '$month' AND YEAR(created_at) = '$year'");
 		$kd = "";
 		if ($q->num_rows() > 0) {
 			foreach ($q->result() as $k) {

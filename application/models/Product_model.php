@@ -38,10 +38,11 @@ class Product_model extends CI_Model
 
     function get_product_by_raw_materials_id($raw_material_id)
     {
-        $this->db->select('*');
+        $this->db->select('products.id as id, barcode, name, product_unit, weight, cost_of_goods, selling_price_of_goods,  products.raw_material_id as raw_material_id, per_pcs, amount');
         $this->db->from('products');
-        $this->db->where('is_deleted', '0');
-        $this->db->where_in('raw_material_id', $raw_material_id);
+        $this->db->join('stock_products', 'stock_products.product_id = products.id', 'left');
+        $this->db->where('products.is_deleted', '0');
+        $this->db->where_in('products.raw_material_id', $raw_material_id);
         $result = $this->db->get()->result_array();
 
         return $result;

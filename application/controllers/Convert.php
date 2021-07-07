@@ -86,8 +86,8 @@ class Convert extends CI_Controller
 
         $this->convert_data->insert_convert_data($dataConvert);
 
-        if ($this->stock_product->check_stock_products($raw_material_id, $product_id, $supplier_id) > 0) {
-            $this->stock_product->input_stock_products($amount_product, $raw_material_id, $product_id, $supplier_id);
+        if ($this->stock_product->check_stock_products($raw_material_id, $product_id) > 0) {
+            $this->stock_product->input_stock_products($amount_product, $raw_material_id, $product_id);
         } else {
             $data = [
                 'raw_material_id'   => $raw_material_id,
@@ -121,7 +121,9 @@ class Convert extends CI_Controller
 
         echo "<option value='0' disabled selected>Select Product</option>";
 		foreach ($products as $key => $product) {
-			echo "<option value='". $product['id'] ."'>". $product['barcode'] . ' | ' . ucwords($product['name']) . ' ' . $product['weight'] . ' ' . ucwords($product['product_unit']) ."</option>";
+            if($product['amount'] == NULL)
+            $product['amount'] = 0;
+			echo "<option value='". $product['id'] ."'>". $product['barcode'] . ' | ' . ucwords($product['name']) . ' ' . $product['weight'] . ' ' . ucwords($product['product_unit']) . ' | Stock :  ' . $product['amount'] . "</option>";
         }
 
     }

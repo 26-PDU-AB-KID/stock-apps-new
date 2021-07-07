@@ -3,23 +3,21 @@
 <div class="col-md-10">
 <form method="POST" action="<?= base_url('Stock_in_product/stockInProcess') ?>">
     <div class="form-group">
+        <label class="font-weight-bolder" for="product">Product</label>
+        <select class="form-control form-control-sm" id="product" name="product">
+            <option value="0" disabled selected>Select Product</option>
+            <?php foreach ($products as $product) : ?>
+                <option value="<?= $product['id'] ?>"><?= ucwords($product['product_name']) ?> <?= $product['weight'] ?> <?= ucwords($product['product_unit']) ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="form-group">
         <label class="font-weight-bolder" for="supplier">Supplier</label>
         <select class="form-control form-control-sm" id="supplier" name="supplier">
             <option value="0" disabled selected>Select Supplier</option>
             <?php foreach ($suppliers as $supplier) : ?>
                 <option value="<?= $supplier['id'] ?>"><?= ucwords($supplier['name']) ?></option>
             <?php endforeach; ?>
-        </select>
-    </div>
-    <div class="form-group">
-        <label class="font-weight-bolder" for="product">Product</label>
-        <select class="form-control form-control-sm" id="product" name="product">
-            <?php if (count($_POST)) : ?>
-
-            <?php else : ?>
-                <option value="0" selected disabled>Select Supplier First</option>
-            <?php endif ?>
-
         </select>
     </div>
     <div class="form-group">
@@ -53,18 +51,6 @@
         timepicker: false,
         format: 'd F Y'
     });
-
-    document.getElementById('supplier').addEventListener('change', function() {
-
-        fetch("<?= base_url('Stock_in_product/getProduct/') ?>" + this.value, {
-                method: 'GET',
-            })
-            .then((response) => response.text())
-            .then((data) => {
-                console.log(data)
-                document.getElementById('product').innerHTML = data
-            })
-    })
 
     document.getElementById('product').addEventListener('change', function() {
 

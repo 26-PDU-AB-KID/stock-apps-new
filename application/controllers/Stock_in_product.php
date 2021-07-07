@@ -24,6 +24,7 @@ class Stock_in_product extends CI_Controller
 	{
         $data = [
             'title'         => 'Stock In Product',
+			'products'		=> $this->product->get_products(),
 			'suppliers'		=> $this->supplier->get_suppliers()
         ];
 
@@ -44,7 +45,7 @@ class Stock_in_product extends CI_Controller
 
         $amountFilter = $this->security->xss_clean($amount);
 
-        $this->stock_product->input_stock_products($amountFilter, $raw_material_id, $product_id, $supplier_id);
+        $this->stock_product->input_stock_products($amountFilter, $raw_material_id, $product_id);
 
         $data = [
             'no_transaction'    => $this->stock_in_product->get_stock_in_product_code(),
@@ -67,16 +68,6 @@ class Stock_in_product extends CI_Controller
         redirect('Stock_in_product');
 
     }
-
-	public function getProduct($supplier_id)
-	{
-		$products = $this->stock_product->get_stock_products_by_supplier_id($supplier_id);
-
-		echo "<option value='0' disabled selected>Select Product</option>";
-		foreach ($products as $key => $product) {
-			echo "<option value='". $product['product_id'] ."'>". ucwords($product['product_name']) . ' ' . $product['weight'] . ' ' . ucwords($product['product_unit']) ."</option>";
-        }
-	}
 
 	public function getUnit($product_id)
     {
